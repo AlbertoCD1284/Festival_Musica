@@ -1,0 +1,10 @@
+// ESTA ES LA PRIMER FORMA de utilizar los import para llamar a los archovos secundarios .scss
+// @import 'base/variables';
+// @import 'contenido/contenido';
+
+
+
+// LA FORMA NUEVA DE IMPORTAR LOS ARCHIVOS DE OTRAS CARPETAS
+@use 'base';
+@use 'layout';
+
