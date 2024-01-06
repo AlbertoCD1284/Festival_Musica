@@ -3,7 +3,42 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function iniciarApp() {
+    navegacionFija();
     crearGaleria();
+    scrollNav();
+}
+
+// Fijar el HEADER para q no se vea un brinco extraño
+function navegacionFija() {
+    const barra = document.querySelector('.header')
+    const sobreFestival = document.querySelector('.sobre-festival')
+    const body = document.querySelector('body')
+
+    window.addEventListener('scroll', function() {
+        if (sobreFestival.getBoundingClientRect().bottom < 0) {
+            barra.classList.add('fijo')
+            body.classList.add('body-scroll')
+        } else {
+            barra.classList.remove('fijo')
+            body.classList.remove('body-scroll')
+        }
+    });
+
+}
+
+// Cuando se da clic en Line Up, Galeria, Boletos baja a su area
+// En el momento q se da el clic baja despacio al area q se busca
+function scrollNav() {
+    const enlaces = document.querySelectorAll('.navegador-principal a')
+
+    enlaces.forEach( enlaces => {
+        enlaces.addEventListener('click', function (e) {
+            e.preventDefault();
+            const seccionScroll = e.target.attributes.href.value;
+            const seccion = document.querySelector(seccionScroll);
+            seccion.scrollIntoView({ behavior: "smooth"});
+        })
+    });
 }
 
 function crearGaleria() {
